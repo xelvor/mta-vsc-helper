@@ -3,6 +3,7 @@
   "displayName": "MTA Helper",
   "description": "MTA Helper extension for Visual Studio Code",
   "version": "0.0.1",
+  "publisher": "xelvor",
   "engines": {
     "vscode": "^1.95.0"
   },
