@@ -1,71 +1,75 @@
-# mta-helper README
-
-This is the README for your extension "mta-helper". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
 
 ---
 
-## Following extension guidelines
+# MTA Helper
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+MTA Helper is a Visual Studio Code extension designed to streamline the workflow for **Multi Theft Auto: San Andreas** (MTA: SA) scripting. With easy commands and automation, it helps developers quickly set up and manage their MTA resources by creating essential files, generating `meta.xml`, and scanning directories for a structured setup.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+## Features
 
-## Working with Markdown
+- **Quick File Generation**: Easily create `client.lua`, `server.lua`, `shared.lua`, `utils.lua` files with sample code to kickstart your project.
+- **Optional Zoom Functionality in client.lua**: Provides an option to include zoom code for adaptable screen scaling in `client.lua`.
+- **Automatic `meta.xml` Creation**: Generate a `meta.xml` file automatically based on selected files, with correct tagging for each type.
+- **Directory Scanning**: Scans a selected folder (including subdirectories) and generates `meta.xml` based on existing `.lua` scripts and other files.
+- **Support for Various File Types**: Detects Lua scripts and adds `<script>` tags, while non-Lua files are included with `<file src="..." />` in `meta.xml`.
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+## Getting Started
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+### Prerequisites
 
-## For more information
+- Visual Studio Code (version 1.95.0 or higher)
+- [Node.js](https://nodejs.org/) installed for development if you want to modify or contribute to the extension
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+### Installation
 
-**Enjoy!**
+1. Download the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/).
+2. Install the extension by searching for **MTA Helper** in the Extensions view (`Ctrl+Shift+X`).
+3. Once installed, the MTA Helper icon will appear in the status bar, ready for use.
+
+### Usage
+
+1. **Access Options**: Click the **MTA Helper** icon in the Visual Studio Code status bar. You'll be prompted with two main options:
+   - **Generate new files**: Allows you to create commonly used Lua files for MTA: SA with a sample structure.
+   - **Generate meta for existing files**: Scans an existing directory for `.lua` and other files, then generates a structured `meta.xml` file.
+
+2. **File Creation with Optional Zoom**:
+   - When creating `client.lua`, choose if you want to include zoom functionality.
+   - This feature adjusts elements based on screen resolution, providing a responsive experience.
+
+3. **Automatic `meta.xml` Generation**:
+   - For each file created or detected, `meta.xml` will be updated with relevant tags.
+   - Lua scripts are wrapped in `<script>` tags with appropriate `type` attributes.
+   - Non-Lua files are wrapped in `<file>` tags for seamless resource management.
+
+### Example `meta.xml` Structure
+
+```xml
+<meta>
+    <script src="client.lua" type="client" cache="false" />
+    <script src="server.lua" type="server" />
+    <script src="shared.lua" type="shared" cache="false" />
+    <file src="image.png" />
+</meta>
+```
+
+### Commands
+
+| Command                          | Description                                  |
+|----------------------------------|----------------------------------------------|
+| `MTA Helper: Show Options`       | Opens the MTA Helper menu in the status bar. |
+| `Generate new files`             | Create new Lua files with sample code.       |
+| `Generate meta for existing files` | Scan folders and create `meta.xml` file.   |
+
+## Contributing
+
+Contributions are welcome! If you'd like to add features or fix bugs, feel free to fork the repository and submit a pull request.
+
+## License
+
+This extension is licensed under the [MIT License](LICENSE).
+
+## Feedback and Support
+
+If you encounter any issues or have feature requests, please open an issue on the [GitHub repository](https://github.com/xelvor/mta-vsc-helper). We’re happy to help!
+
+---
